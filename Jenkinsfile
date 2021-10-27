@@ -1,5 +1,5 @@
 def getBranchTag(env) {
-  return (env.BRANCH_NAME == "master") ? "latest" : env.BRANCH_NAME
+  return (env.BRANCH_NAME == "main") ? "latest" : env.BRANCH_NAME
 }
 
 pipeline {
