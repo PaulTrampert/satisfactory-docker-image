@@ -1,15 +1,16 @@
-FROM steamcmd/steamcmd
+FROM cm2network/steamcmd
 
-RUN adduser --disabled-login satisfactory --home /home/satisfactory
-USER satisfactory
-ENV HOME /home/satisfactory
-WORKDIR /home/satisfactory
-RUN steamcmd +login anonymous +force_install_dir SatisfactoryDedicatedServer +app_update 1690800 +quit
-RUN mkdir -p /home/satisfactory/.config/Epic/FactoryGame/Saved/
-VOLUME ["/home/satisfactory/.config/Epic/FactoryGame/Saved/"]
+ENV STEAMAPPID 1690800
+ENV STEAMAPP Satisfactory
+ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
+
+RUN ${HOMEDIR}/steamcmd/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit
+RUN mkdir -p ${HOMEDIR}/.config/Epic/FactoryGame/Saved/
+ENV PATH ${PATH}:${STEAMAPPDIR}
+VOLUME ["${HOMEDIR}/.config/Epic/FactoryGame/Saved/"]
 
 EXPOSE 15777/udp
 EXPOSE 15000/udp
 EXPOSE 7777/udp
 
-ENTRYPOINT [ "./.steam/steamcmd/SatisfactoryDedicatedServer/FactoryServer.sh" ]
+CMD [ "FactoryServer.sh" ]
