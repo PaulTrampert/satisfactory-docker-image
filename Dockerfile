@@ -10,6 +10,7 @@ RUN ${HOMEDIR}/steamcmd/steamcmd.sh +force_install_dir ${STEAMAPPDIR} +login ano
 RUN mkdir -p ${HOMEDIR}/.config/Epic/FactoryGame/Saved/
 ENV PATH=${PATH}:${STEAMAPPDIR}
 VOLUME ["${HOMEDIR}/.config/Epic/FactoryGame/Saved/"]
+VOLUME ["${STEAMAPPDIR}/Saved/Config/LinuxServer/"]
 
 EXPOSE 7777/tcp
 EXPOSE 7777/udp
