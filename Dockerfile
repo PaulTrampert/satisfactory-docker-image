@@ -11,7 +11,7 @@ RUN mkdir -p ${HOMEDIR}/.config/Epic/FactoryGame/Saved/
 RUN mkdir -p ${STEAMAPPDIR}/Saved/Config/LinuxServer/
 ENV PATH=${PATH}:${STEAMAPPDIR}
 VOLUME ["${HOMEDIR}/.config/Epic/FactoryGame/Saved/"]
-VOLUME ["${STEAMAPPDIR}/Saved/Config/LinuxServer/"]
+VOLUME ["${STEAMAPPDIR}/FactoryGame/Saved/Config/LinuxServer/"]
 
 EXPOSE 7777/tcp
 EXPOSE 7777/udp
