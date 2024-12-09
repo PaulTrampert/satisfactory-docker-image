@@ -8,7 +8,7 @@ ENV STEAMAPPDIR="${HOMEDIR}/${STEAMAPP}-dedicated"
 
 RUN ${HOMEDIR}/steamcmd/steamcmd.sh +force_install_dir ${STEAMAPPDIR} +login anonymous +app_update ${STEAMAPPID} -beta ${RELEASE_BRANCH} validate +quit
 RUN mkdir -p ${HOMEDIR}/.config/Epic/FactoryGame/Saved/
-RUN mkdir -p ${STEAMAPPDIR}/Saved/Config/LinuxServer/
+RUN mkdir -p ${STEAMAPPDIR}/FactoryGame/Saved/Config/LinuxServer/
 ENV PATH=${PATH}:${STEAMAPPDIR}
 VOLUME ["${HOMEDIR}/.config/Epic/FactoryGame/Saved/"]
 VOLUME ["${STEAMAPPDIR}/FactoryGame/Saved/Config/LinuxServer/"]
